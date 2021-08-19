@@ -1,11 +1,5 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from datetime import timezone
-import datetime
-
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/test.db"
-db = SQLAlchemy(app)
+from datetime import datetime
+from demo import db
 
 
 class User(db.Model):
@@ -28,7 +22,3 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.post_data}')"
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
